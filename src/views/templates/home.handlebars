@@ -1,37 +1,46 @@
-<div class="container mt-5">
-    <h1>Productos</h1>
-    <div class="row">
+<!-- home.handlebars -->
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold text-gray-300 mb-8 text-center">¡Productos Destacados!</h1>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {{#each prods.docs}}
-        <div class="col-md-4 mb-4">
-            <div class="card h-80 shadows-md">
-                <div class="card-body">
-                    <h5 class="card-title">{{this.title}}</h5>
-                    <p class="card-text">{{this.description}}</p>
-                    <p class="card-text">${{this.price}}</p>
-                    <a href="/api/products/{{this._id}}">Ver Producto</a>
+        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <!-- Contenido de la tarjeta -->
+            <div class="p-6">
+                <!-- Encabezado -->
+                <div class="flex justify-between items-center mb-4">
+                    <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">
+                        {{this.category}}
+                    </span>
+                    <span class="text-sm text-gray-500">
+                        {{this.stock}} unidades
+                    </span>
                 </div>
+
+                <!-- Cuerpo -->
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">{{this.title}}</h3>
+                <p class="text-gray-600 mb-4 line-clamp-3">{{this.description}}</p>
+
+                <!-- Precio -->
+                <div class="flex items-center justify-between">
+                    <span class="text-2xl font-bold text-blue-600">${{this.price}}</span>
+                </div>
+            </div>
+
+            <!-- Botón -->
+            <div class="px-6 pb-4">
+                <a href="/products/{{this._id}}" 
+                   class="w-full inline-flex items-center justify-center px-4 py-2 border border-transparent 
+                          rounded-md shadow-sm text-base font-medium text-white bg-gray-800 hover:bg-gray-700 
+                          transition-colors duration-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 12l3 3m-3-3l3-3m15 9a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    Ver Detalles
+                </a>
             </div>
         </div>
         {{/each}}
     </div>
-    <!-- Paginacion -->
-    <nav aria-label="Page Navigation">
-        <ul class="pagination justify-content-center">
-            {{#if prods.hasPrevPage}}
-            <li class="page-item">
-                <a class="page-link" href="?page={{prods.prevPage}}&limit={{prods.limit}}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-            </li>
-            {{/if}}
-            {{#each prods.pageNumbers}}
-            <li class="page-item {{#if this.isCurrent}}active {{/if}}">
-                <a class="page-link" href="?page={{this.number}}&limit={{prods.limit}}">{{this.number}}</a>
-            </li>
-            {{/each}}
-            {{#if prods.hasNextPage}}
-            <li class="page-item">
-                <a class="page-link" href="?page={{prods.nextPage}}&limit={{prods.limit}}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-            </li>
-            {{/if}}
-        </ul>
-    </nav>
 </div>

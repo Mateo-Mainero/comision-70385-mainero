@@ -1,15 +1,32 @@
-<header class="bg-gray-900 text-white shadow-lg">
-    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+<!-- header.handlebars -->
+<header class="bg-gray-900 shadow-lg fixed w-full top-0 z-50 h-16">
+    <nav class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between h-12"> <!-- Altura fija -->
+            <!-- Logo - Alineación vertical perfecta -->
+            <a href="/" class="flex items-center h-full">
+                <span class="text-2xl font-bold text-blue-400 hover:text-blue-300 transition-colors duration-300">
+                    Mi App
+                </span>
+            </a>
 
-        <a href="/" class="text-2xl font-bold text-blue-400 hover:text-blue-300 transition duration-300">
-            Mi App
-        </a>
+            <!-- Menú Desktop - Alineación corregida -->
+            <div class="hidden md:flex items-center space-x-6 h-full">
+                <a href="/api/sessions/viewlogin" 
+                   class="text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 flex items-center h-full">
+                    Iniciar Sesión
+                </a>
+                <a href="/api/sessions/viewregister" 
+                   class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors duration-300 flex items-center h-full">
+                    Registrarse
+                </a>
+            </div>
 
-        <!-- Menú de navegación -->
-        <nav class="space-x-6">
-            <a href="/api/sessions/viewlogin" class="text-gray-300 hover:text-blue-400 transition duration-300">Iniciar Sesión</a>
-            <a href="/api/sessions/viewregister" class="text-gray-300 hover:text-blue-400 transition duration-300">Registrarse</a>
-            
-        </nav>
-    </div>
+            <!-- Botón Mobile (alineado verticalmente) -->
+            <button class="md:hidden text-gray-300 hover:text-white focus:outline-none flex items-center h-full">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
 </header>

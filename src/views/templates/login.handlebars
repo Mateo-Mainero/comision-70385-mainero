@@ -16,7 +16,7 @@
 <body class="flex items-center justify-center min-h-screen">
     <div class="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
         <h1 class="text-3xl font-bold text-center mb-6">Iniciar Sesión</h1>
-        <form action="/api/sessions/login" method="POST" class="space-y-6">
+        <form action="/api/sessions/login" id="loginForm" method="post" class="space-y-6">
             <div>
                 <label for="email" class="block text-sm font-medium text-gray-300">Correo Electrónico</label>
                 <input type="email" id="email" name="email" required
@@ -33,7 +33,8 @@
             </button>
             <p class="text-center text-gray-400">
                 ¿No tienes una cuenta? 
-                <a href="/api/sessions/viewregister" class="text-blue-400 hover:text-blue-300">Regístrate aquí</a>
+                <a href="/api/sessions/github" class="text-blue-400 hover:text-blue-300">Iniciar Sesion con Github</a>
+                <a href="/api/sessions/viewregister" class="text-blue-400 hover:text-blue-300">¿No posee una cuenta? Registrarse</a>
             </p>
         </form>
     </div>
